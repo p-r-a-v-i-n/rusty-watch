@@ -130,7 +130,7 @@ pub fn main() {
         .build()
         .unwrap();
 
-    let mut canvas = window.into_canvas().build().unwrap();
+    let mut canvas = window.into_canvas().present_vsync().build().unwrap();
 
     let mut event_pump = sdl_context.event_pump().unwrap();
 
@@ -154,5 +154,6 @@ pub fn main() {
         draw_hands(&mut canvas);
 
         canvas.present();
+	std::thread::sleep(std::time::Duration::from_millis(16));
     }
 }
